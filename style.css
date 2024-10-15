@@ -1,0 +1,87 @@
+/* style.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e9f5f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+input[type='text'] {
+  padding: 12px;
+  font-size: 16px;
+  width: 300px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  margin-right: 10px;
+  transition: border-color 0.3s ease;
+}
+
+input[type='text']:focus {
+  border-color: #2980b9;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #3498db;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+select {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-right: 10px;
+  border: 2px solid #3498db;
+  background-color: white;
+  cursor: pointer;
+}
+
+#habitList {
+  margin-top: 20px;
+  width: 400px;
+}
+
+#habitList div {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+#habitList div:hover {
+  transform: scale(1.03);
+  background-color: #f1f1f1;
+}
+
+#clearHabits {
+  background-color: #e74c3c;
+}
+
+#clearHabits:hover {
+  background-color: #c0392b;
+}

@@ -18,6 +18,8 @@ function addHabit() {
   } else {
     alert('enter a habit')
   }
+
+  saveHabit()
 }
 
 function displayHabits() {
@@ -37,7 +39,36 @@ function displayHabits() {
 }
 
 function filterHabit() {
-  console.log('filter habit')
+  const filterValue = document.getElementById('filter').value
+  let filteredHabits = []
+
+  if (filterValue === 'completed') {
+    filteredHabits = habits.filter((habit) => habit.completed)
+  } else if (filterValue === 'active') {
+    filteredHabits = habits.filter((habit) => !habit.completed)
+  } else {
+    filteredHabits = habits // Show all if no filter is applied
+  }
+
+  displayFilteredHabits(filteredHabits)
+}
+
+function displayFilteredHabits(filteredHabits) {
+  const habitList = document.getElementById('habitList')
+  habitList.innerHTML = ''
+
+  filteredHabits.forEach((habit, index) => {
+    const habitItem = document.createElement('div')
+    habitItem.textContent = habit.habit
+    habitItem.style.textDecoration = habit.completed ? 'line-through' : 'none'
+
+    habitItem.addEventListener('click', () => {
+      habit.completed = !habit.completed
+      displayFilteredHabits(filteredHabits) // Update filtered view
+    })
+
+    habitList.appendChild(habitItem)
+  })
 }
 
 function sortHabit() {
@@ -51,3 +82,26 @@ function sortHabit() {
   })
   displayHabits()
 }
+
+function saveHabit() {
+  localStorage.setItem('habits', JSON.stringify(habits))
+}
+
+function loadHabit() {
+  let storedHabit = JSON.parse(localStorage.getItem('habits') || [])
+  habits = storedHabit
+  displayHabits()
+}
+
+loadHabit()
+
+function clearHabits() {
+  habits = []
+  saveHabit()
+  displayHabits()
+}
+
+// Add this to your HTML:
+// <button id="clearHabits">Clear Habits</button>
+
+document.getElementById('clearHabits').addEventListener('click', clearHabits)
